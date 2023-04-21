@@ -1,2 +1,1 @@
-# Apuntes 
-Libro Python For Data Analysis - Wes McKinney
+Apuntes - Libro - Python For Data Analysis - Wes McKinney
