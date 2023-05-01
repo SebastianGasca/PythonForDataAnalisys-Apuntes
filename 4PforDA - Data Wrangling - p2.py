@@ -94,7 +94,7 @@ df
 
 #Hay que identificar que variable sera el indicar de grupo. En el ejemplo usaremos
 #la columna "key". 
-melted = df.melt(id_vars="key")
+melted = df.melt(id_vars="key"); melted
 
 #Podemos pasar de un "long format" a "wide format" usando .melt() y luego .pivot().
 #En el siguiente ejemplo volvemos al DataFrame original ("df")
