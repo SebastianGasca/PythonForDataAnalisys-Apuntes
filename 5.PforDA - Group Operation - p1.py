@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 # ---- # ---- # ----
-# 1 Data Aggregation and Group Operations
+# 10.1 Data Aggregation and Group Operations
 # Aprenderemos 
 
 # 1.Split pandas objects into pieces using one or more keys
@@ -46,7 +46,7 @@ df.groupby("key1").count()
 
 
 # ---- # ---- # ----
-# 1.1 Iterating over Group
+# 10.1.1 Iterating over Group
 # Los objetos agrupados soportan iteracion. La respuesta de un groupby es una tupla compuesta por nombre y 
 # los datos del grupo
 for name, group in df.groupby("key1"):
@@ -72,7 +72,7 @@ for group_key, group_values in grouped:
 
 
 # ---- # ---- # ----
-# 1.2 Selecting a Column or Subset of Columns
+# 10.1.2 Selecting a Column or Subset of Columns
 # Podemos seleccionar una sola columna del DF agrupado
 
 df.groupby("key1")["data1"]     #De esta forma tenemos una Serie
@@ -84,7 +84,7 @@ df.groupby(["key1","key2"])[["data2"]].mean()
 
 
 # ---- # ---- # ----
-# 1.3 Grouping with Dictionaries and Series
+# 10.1.3 Grouping with Dictionaries and Series
 # No solo usamos array para declarar las variables agrupadas, podemos usar 
 # Diccionarios o Series. 
 
@@ -111,7 +111,7 @@ people.groupby(map_series, axis="columns").count()
 
 
 # ---- # ---- # ----
-# 1.4 Grouping with Functions
+# 10.1.4 Grouping with Functions
 # No solo usamos Arrays, Diccionarios o Series para declarar las variables agrupadas, podemos
 # usar funciones de python.
 
@@ -133,7 +133,7 @@ people.groupby([len, key_list]).min()
 
 
 # ---- # ---- # ----
-# 1.5 Grouping by Index Levels
+# 10.1.5 Grouping by Index Levels
 # Los indices jerarquicos posee niveles, estos pueden ser usados para ser asignados como grupos
 columns = pd.MultiIndex.from_arrays([["US", "US", "US", "JP", "JP"],
                                      [1, 3, 5, 1, 3]],
@@ -156,7 +156,7 @@ hier_df.groupby(level="cty", axis="columns").count()
 
 
 # ---- # ---- # ----
-# 2 Data Aggregation
+# 10.2 Data Aggregation
 # Algunas funciones de agregacion (que producen valores escalares producto de vectores/arrays)
 # estan optimizadas para trabajar con DF agrupados. (ver tabla 10.1). 
 
@@ -184,7 +184,7 @@ grouped.describe()
 
 
 # ---- # ---- # ----
-# 2.1 Column-Wise and Multiple Function Application
+# 10.2.1 Column-Wise and Multiple Function Application
 #Leeremos un .csv que contiene datos sobre pagos en un restaurant. 
 
 # total_bill (pago)
@@ -231,7 +231,7 @@ grouped.agg({"tip_pct" : ["min", "max", "mean", "std"], "size" : "sum"})
 
 
 # ---- # ---- # ----
-# 2.2 Returning Aggregated Data Without Row Indexes
+# 10.2.2 Returning Aggregated Data Without Row Indexes
 # En todos los ejemplos realizados, los datos agregados vienen con un indice jerarquico 
 # compuesto de "unique group key combinations". Ya que esto en ocaciones no es lo mas 
 # deseable podemos desactivar este comportamiento por defecto con "as_index = False"

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 # ---- # ---- # ----
-# 2.3 Apply: General split-apply-combine
+# 10.3 Apply: General split-apply-combine
 # El metodo de uso mas general de groupby es .apply(). Este metodo trabaja sobre el DF agrupado
 # e invoca una funcion a cada grupo y trata de concadenar cada pieza con la funcion aplicada. 
 
@@ -36,7 +36,7 @@ tips.groupby("smoker")["tip_pct"].apply(f)
 
 
 # ---- # ---- # ----
-# 2.3.1 Suppressing the Group Keys
+# 10.3.1 Suppressing the Group Keys
 # Con "group_keys = False" podemos desactivar el comportamiento por defecto de dejar 
 # las combinaciones de llaves usadas para agrupar los DF como indices. 
 
@@ -54,7 +54,7 @@ tips.groupby("smoker", as_index=False).agg("mean")
 
 
 # ---- # ---- # ----
-# 2.3.2 Quantile and Bucket Analysis
+# 10.3.2 Quantile and Bucket Analysis
 # Como habiamos visto, tenemos las funciones pd.cut() o pd.qcut() para segmentar series
 frame = pd.DataFrame({"data1": np.random.standard_normal(1000),
                       "data2": np.random.standard_normal(1000)})
@@ -77,7 +77,7 @@ r1.stack(level=0)
 
 
 # ---- # ---- # ----
-# 2.3.3 Example: Filling Missing Values with Group-Specific Values
+# 10.3.3 Example: Filling Missing Values with Group-Specific Values
 # Cuando tratamos con NAs, en algunos casos los eliminamos (dropna) y en otros los rellenamos (fillna)
 # Es util rellenar los NAs en funcion al comportamiento de un grupo 
 
@@ -110,7 +110,7 @@ data.groupby(group_key, group_keys=True).apply(fill_func)
 
 
 # ---- # ---- # ----
-# 2.3.4 Example: Filling Missing Values with Group-Specific Values
+# 10.3.4 Example: Filling Missing Values with Group-Specific Values
 # Supongamos que queremos hacer un muestreo aleatorio de un conjunto grande datos.
 # Hay diferentes formas de hacer esto, aca mostramos uno. Usaremos de ejemplo el 
 # robo aleatorio en un mazo de cartas  
@@ -150,7 +150,7 @@ deck.groupby(deck.index.str[-1]).apply(draw, n=2)   #Agrupamos por las pintas.
 
 
 # ---- # ---- # ----
-# 2.3.5 Example: Group Weighted Average and Correlation
+# 10.3.5 Example: Group Weighted Average and Correlation
 # Es util, bajo el paradigma de groupby las operaciones entre columnas de un DFs or dos Series
 # Como ejemplo calcularemos el promedio ponderado de una columna A por una B
 
@@ -185,7 +185,7 @@ grouped.apply(get_wavg)
 
 
 # ---- # ---- # ----
-# 2.4 Group Transforms and "Unwrapped" GroupBys
+# 10.4 Group Transforms and "Unwrapped" GroupBys
 # Hay otro metodo diferente a .agg() y .apply() para trabajar con datos agrupados, 
 # este es .transform(). 
 # La particularidad de este metodo es retorna una Serie  del mismo largo que la Serie 
@@ -235,7 +235,7 @@ normalized = (df['value'] - g.transform('mean')) / g.transform('std'); normalize
 #"Unwrapped" GroupBys
 
 # ---- # ---- # ----
-# 2.5 Group Transforms and "Unwrapped" GroupBys
+# 10.5 Group Transforms and "Unwrapped" GroupBys
 # "Pivot Tables" son comunmente resumenes de datos encontrados en "spreadsheet program",
 # Pandas DataFrame tienen un metodo .pivot_table() y tambien una funcion pd.pivot_table()
 # que nos otorgan trabajar los datos como "Pivot Tables". Este metodo/funcion nos permite 
@@ -273,7 +273,7 @@ tips.pivot_table(index=["time", "size", "smoker"], columns="day",
                  values="tip_pct", fill_value=0)
 
 # ---- # ---- # ----
-# 2.6 Cross-Tabulations: Crosstab
+# 10.6 Cross-Tabulations: Crosstab
 # Cross-Tabulations or Crostab en corto, es un caso especial de Pivot Table que nos 
 # calcula la frecuencia entre grupos. 
 
